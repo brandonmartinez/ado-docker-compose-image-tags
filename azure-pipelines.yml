@@ -12,8 +12,8 @@ stages:
               azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
               azureContainerRegistry: $(azureContainerRegistry)
               dockerComposeFile: "**/docker-compose.yml"
-              # dockerComposeFileArgs: "DOCKER_BUILD_SOURCE="
               action: "Build services"
+              # The following parameter allows you to add additional tags to the image
               additionalImageTags: "$(Build.BuildId)"
               includeLatestTag: true
           - task: DockerCompose@0
@@ -23,7 +23,7 @@ stages:
               azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
               azureContainerRegistry: $(azureContainerRegistry)
               dockerComposeFile: "**/docker-compose.yml"
-              # dockerComposeFileArgs: "DOCKER_BUILD_SOURCE="
               action: "Push services"
+              # The following parameter allows you to add additional tags to the image
               additionalImageTags: "$(Build.BuildId)"
               includeLatestTag: true
